@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Create account — Ramalinga Enterprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  
+<div class="video-background">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >    
+        <source
+         src="assets/Modern_appliances_in_smart_home_202608231654.mp4"
+         type="video/mp4"
+        >
+        </video>
+
+        <div class="video-overlay"></div>
+      </div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="css/removebg-preview.png" alt="company logo" class="mark">
+      Ramalinga Enterprises
+      <span class="tag">Since Est.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div id="nav-auth-slot" style="display:flex; gap:12px; align-items:center;"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main class="auth-wrap">
+  <div class="auth-card">
+    <span class="eyebrow">Account</span>
+    <h2>Create an account</h2>
+    <p>Save orders and track service requests.</p>
+
+    <div id="register-msg" class="form-msg"></div>
+
+    <form id="register-form">
+      <div class="field">
+        <label for="name">Full name</label>
+        <input type="text" id="name" name="name" required autocomplete="name" />
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required autocomplete="email" />
+      </div>
+      <div class="field">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required minlength="8" autocomplete="new-password" />
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Create account</button>
+    </form>
+
+    <div class="auth-switch">
+      Already have an account? <a href="login.html">Log in</a>
+    </div>
+  </div>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/three-bg.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

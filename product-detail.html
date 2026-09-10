@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Product Detail — Ramalinga Enterprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="video-background">
+  <video autoplay muted loop playsinline preload="auto">
+    <source src="assets/Modern_appliances_in_smart_home_202608231654.mp4" type="video/mp4">
+  </video>
+  <div class="video-overlay"></div>
+</div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="css/removebg-preview.png" alt="company logo" class="mark">
+      Ramalinga Enterprises
+      <span class="tag">Since Est.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div id="nav-auth-slot" style="display:flex; gap:12px; align-items: center;"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </div>
+</nav>
+
+<main class="section" style="min-height: calc(100vh - 73px); position: relative; z-index: 1;">
+  <div class="container">
+    <div id="product-detail-container">
+      <!-- Filled by main.js initProductDetail()-->
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Ramalinga Enterprises. All rights reserved.</span>
+      <span>Model codes RE-1000 series</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/three-bg.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

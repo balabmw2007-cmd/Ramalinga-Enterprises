@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Products — Ramalinga Enterprises</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="video-background">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >    
+        <source
+         src="assets/Modern_appliances_in_smart_home_202608231654.mp4"
+         type="video/mp4"
+        >
+        </video>
+
+        <div class="video-overlay"></div>
+      </div>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="css/removebg-preview.png" alt="company logo" class="mark">
+      Ramalinga Enterprises
+      <span class="tag">Since Est.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="products.html" class="active">Products</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div id="nav-auth-slot" style="display:flex; gap:12px; align-items:center;"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero" style="padding: 80px 0 40px;">
+  <div class="container">
+    <span class="eyebrow">Catalog</span>
+    <h1 style="max-width: 20ch;">Full appliance lineup</h1>
+    <p class="hero-lede">Live catalog pulled from the Ramalinga Enterprises API.</p>
+  </div>
+</header>
+
+<section class="section" style="padding-top:0;">
+  <div class="container">
+    <div class="product-filter" id="product-filter">
+      <button data-category="All" class="active">All</button>
+      <button data-category="Refrigerators">Refrigerators</button>
+      <button data-category="Televisions">Televisions</button>
+      <button data-category="Washing Machines">Washing Machines</button>
+      <button data-category="Air Conditioners">Air Conditioners</button>
+      <button data-category="Fans">Fans</button>
+      <button data-category="Kitchen">Kitchen</button>
+    </div>
+    <div class="grid-3" id="product-grid"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Ramalinga Enterprises. All rights reserved.</span>
+      <span>Model codes RE-1000 series</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/three-bg.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>

@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="description" content="Ramalinga Enterprises: refrigerators, washing machines, air conditioners and kitchen appliances engineered for Indian homes." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<canvas id="appliance-bg"></canvas>
+
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="index.html" class="brand">
+      <img src="css/removebg-preview.png" alt="company logo" class="mark">
+      Ramalinga Enterprises
+      <span class="tag">Since Est.</span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html" class="active">Home</a></li>
+      <li><a href="products.html">Products</a></li>
+      <li><a href="#posts-section">Feed</a></li>
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <div id="nav-auth-slot" style="display:flex; gap:12px; align-items:center;"></div>
+      <button class="nav-toggle" aria-label="Toggle navigation">☰</button>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="eyebrow">Home Appliances · Est. Product Line RE-1000</span>
+      <h1>Appliances engineered for everyday India.</h1>
+      <p class="hero-lede">
+        Refrigerators, washing machines, air conditioners and kitchen appliances
+        from Ramalinga Enterprises — built for reliability, backed by service
+        centers across the country.
+      </p>
+      <div class="hero-actions">
+        <a href="products.html" class="btn btn-primary">Browse catalog</a>
+        <a href="register.html" class="btn btn-ghost">Create an account</a>
+      </div>
+            
+      <div class="video-background">
+        <video
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="auto"
+        >    
+        <source
+         src="./assets/home appliences Video.mp4"
+         type="video/mp4"
+        >
+        </video>
+
+        <div class="video-overlay"></div>
+      </div>
+
+      <div class="hero-specs">
+        <div><div class="num">8+</div><div class="label">Appliance categories</div></div>
+        <div><div class="num">100+</div><div class="label">Service to customer homes</div></div>
+        <div><div class="num">2 Yr</div><div class="label">Standard warranty</div></div>
+      </div>
+
+    </div>
+    <div></div>
+  </div>
+</header>
+
+<section class="section" id="categories">
+  <div class="container">
+    <div class="section-head">
+      <span class="eyebrow">Catalog</span>
+      <h2>Six categories, engineered in-house.</h2>
+      <p>Every product carries a Ramalinga model code and a two-year standard warranty.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <span class="code">RE-4XXX</span>
+        <h3>Refrigerators</h3>
+        <p>Frost-free double door units with inverter compressors.</p>
+      </div>
+      <div class="card-tag">
+        <span class="code2">RE-2XXX</span>
+        <h3>Washing Machines</h3>
+        <p>Front and top load, steam wash, 14-program cycles.</p>
+      </div>
+      <div class="card-tag5">
+        <span class="code7">RE-2XXX</span>
+        <h3>Smart LED Televisions</h3>
+        <p>ultra HD Smart LED TV with vibrant display and surround sound.</p>
+      </div>
+      <div class="card-tag1">
+        <span class="code3">RE-6XXX</span>
+        <h3>Air Conditioners</h3>
+        <p>Split inverter ACs with copper coils and dust filtration.</p>
+      </div>
+      <div class="card-tag2">
+        <span class="code4">RE-1XXX</span>
+        <h3>Fans</h3>
+        <p>Tower and pedestal fans with remote control.</p>
+      </div>
+      <div class="card-tag3">
+        <span class="code5">RE-3XXX</span>
+        <h3>Kitchen</h3>
+        <p>Microwaves, coffee makers and countertop appliances.</p>
+      </div>
+      <div class="card-tag4">
+        <span class="code6">RE-9XXX</span>
+        <h3>Service & Support</h3>
+        <p>120+ authorized centers, genuine spare parts.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Posts, Videos & News Section -->
+<section class="section" id="posts-section">
+  <div class="container">
+    <div class="section-head" style="display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 16px;">
+      <div>
+        <span class="eyebrow">Showroom Feed</span>
+        <h2>Posts, Videos & Store Updates</h2>
+        <p>Explore product demos, new arrivals, seasonal promotions, and appliance maintenance tips.</p>
+      </div>
+      <button id="toggle-post-form-btn" class="btn btn-primary" type="button">+ Upload Post / Video</button>
+    </div>
+
+    <!-- Upload Box (Collapsible) -->
+    <div id="post-upload-container" class="post-upload-box" style="display: none;">
+      <div class="post-upload-header">
+        <h3>Upload a Post or Video</h3>
+        <button id="close-post-form-btn" class="post-close-btn" type="button">&times;</button>
+      </div>
+      <div id="post-upload-msg" class="form-msg"></div>
+      <form id="post-upload-form" enctype="multipart/form-data">
+        <div class="field">
+          <label for="post-title">Title *</label>
+          <input type="text" id="post-title" name="title" required placeholder="e.g. New 4K Smart TVs Available in Store!" />
+        </div>
+        <div class="field">
+          <label for="post-description">Caption / Description</label>
+          <textarea id="post-description" name="description" rows="3" placeholder="Share details about this appliance, warranty, discount, or demonstration..."></textarea>
+        </div>
+        <div class="field">
+          <label for="post-media">Upload Image or Video (Optional, max 100MB)</label>
+          <input type="file" id="post-media" name="media" accept="image/*,video/*" />
+          <span class="field-hint">Supports MP4, WEBM, MOV videos and JPG, PNG, WEBP images.</span>
+        </div>
+        <div class="field">
+          <label for="post-tags">Tags (Optional, comma separated)</label>
+          <input type="text" id="post-tags" name="tags" placeholder="e.g. SmartTV, Offer, Demo, NewArrival" />
+        </div>
+        <div style="display:flex; gap:12px; margin-top: 14px;">
+          <button type="submit" class="btn btn-primary" id="post-submit-btn">Publish Post</button>
+          <button type="button" class="btn btn-ghost" id="cancel-post-btn">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Dynamic Posts Grid -->
+    <div id="posts-grid" class="posts-grid">
+      <div class="posts-loading"><p>Loading posts & videos…</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+      <span class="eyebrow">About</span>
+      <h2>Built by people who service what they sell.</h2>
+      <p><b>Ramalinga Enterprises in West Car Street, Chidambaram:</b>
+
+          Ramalinga Enterprises in Chidambaram is one of the leading businesses in the AC Repair & Services. Also known for AC Repair & Services, Electronic Goods Showrooms, Home Appliance Dealers, AC Dealers, AC Repair & Services–LG, AC Installation Services, AC Repair & Services–Samsung, AC Dealers–Haier and much more. Find Address, Contact Number, Reviews & Ratings, Photos, Maps of Ramalinga Enterprises, Chidambaram.</p>
+         <p><b>Location and Overview:</b>
+
+          Established in the year 01–2025, Ramalinga Enterprises in West Car Street, Chidambaram is a top player in the category AC Repair & Services in the Chidambaram. This well-known establishment acts as a one-stop destination serving customers both local and from other parts of Chidambaram. Over the course of its journey, this business has established a firm foothold in its industry. The belief that customer satisfaction is as important as their products and services, have helped this establishment garner a vast base of customers, which continues to grow by the day. This business employs individuals that are dedicated towards their respective roles and put in a lot of effort to achieve the common vision and larger goals of the company. In the near future, this business aims to expand its line of products and services and cater to a larger client base. In Chidambaram, this establishment occupies a prominent location in West Car Street. It is an effortless task in commuting to this establishment as there are various modes of transport readily available. It is at Sivakami Amman Koil Street, Near Kanchithotti Bus Stand, which makes it easy for first-time visitors in locating this establishment. It is known to provide top service in the following categories: AC Repair & Services, Electronic Goods Showrooms, Home Appliance Dealers, AC Dealers, AC Repair & Services–LG, AC Installation Services, AC Repair & Services–Samsung, AC Dealers–Haier.</p>
+
+         <p><b> Products and Services offered:</b>
+
+          Ramalinga Enterprises in West Car Street has a wide range of products and / or services to cater to the varied requirements of their customers. The staff at this establishment are courteous and prompt at providing any assistance. They readily answer any queries or questions that you may have. Pay for the product or service with ease by using any of the available modes of payment, such as Cash, UPI, Visa / Master Card / Rupay, Cheque / Demand Draft, EMI Financing. This establishment is functional from 09:30 – 21:00.</p>
+
+         <p> Please scroll to the top for the address and contact details of Ramalinga Enterprises at West Car Street, Chidambaram.</p>
+      <p>Trusted by Fortune 500 companies worldwide.</p>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="brand" style="margin-bottom:10px;">
+          <span class="mark"></span><img src="css/removebg-preview.png" alt="company logo" class="mark-link">Ramalinga Enterprises
+        </div>
+        <p>Home appliances engineered and serviced for Indian households.</p>
+      </div>
+      <div>
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="products.html">All products</a></li>
+          <li><a href="products.html">Refrigerators</a></li>
+          <li><a href="products.html">Washing machines</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Account</h4>
+        <ul>
+          <li><a href="login.html">Log in</a></li>
+          <li><a href="register.html">Create account</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4><b>Contact</b></h4>
+        <ul>
+          <li><a href="https://WA.me/919363912002?text= Hello Ramalinga Enterprises, I am interested in visiting your HomeAppliances store to see your products." target="_blank" rel="noopener noreferrer">💬 WhatsApp contact </a></li>
+          <li><a href="mailto:support@ramalingaenterprises.example">📧 Emai</a></li>
+          <li><a href="tel:+919363912002">📞 Call</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© <span id="year"></span> Ramalinga Enterprises. All rights reserved.</span>
+      <span>Model codes RE-1000 series</span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="js/three-bg.js"></script>
+<script src="js/auth.js"></script>
+<script src="js/main.js"></script>
+<script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
