@@ -6,10 +6,17 @@ const Post = require("../models/Post");
 
 const router = express.Router();
 
-// Ensure upload directory exists
-const uploadDir = path.join(__dirname, "../uploads");
-if (!fs.existsSync(uploadDir)) {
-  fs.mkdirSync(uploadDir, { recursive: true });
+// Ensure upload directory exists (use /tmp in serverless environments like Vercel)
+const uploadDir = process.env.VERCEL
+  ? path.join("/tmp", "uploads")
+  : path.join(__dirname, "../uploads");
+
+try {
+  if (!fs.existsSync(uploadDir)) {
+    fs.mkdirSync(uploadDir, { recursive: true });
+  }
+} catch (fsErr) {
+  console.warn("Upload directory creation warning:", fsErr.message);
 }
 
 // Multer storage config

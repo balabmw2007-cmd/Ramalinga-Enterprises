@@ -1,11 +1,11 @@
-require("dotenv").config();
+const path = require("path");
+require("dotenv").config({ path: path.join(__dirname, ".env") });
 
 const express = require("express");
 const cors = require("cors");
 const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 
-const path = require("path");
 const { connectDB } = require("./config/db");
 const authRoutes = require("./routes/auth");
 const productRoutes = require("./routes/products");
@@ -34,7 +34,11 @@ app.use(
 );
 app.use(express.json({ limit: "50mb" }));
 app.use(express.urlencoded({ extended: true, limit: "50mb" }));
-app.use("/uploads", express.static(path.join(__dirname, "uploads")));
+const uploadStaticDir = process.env.VERCEL
+  ? path.join("/tmp", "uploads")
+  : path.join(__dirname, "uploads");
+app.use("/uploads", express.static(uploadStaticDir));
+app.use(express.static(path.join(__dirname, "../frontend")));
 app.use(morgan(process.env.NODE_ENV === "production" ? "combined" : "dev"));
 
 // Basic rate limiting on auth endpoints to slow down brute-force attempts
@@ -46,6 +50,20 @@ const authLimiter = rateLimit({
   message: { error: "Too many attempts. Please try again later." },
 });
 app.use("/api/auth", authLimiter);
+
+// Ensure MongoDB connection for API requests
+app.use(async (req, res, next) => {
+  if (req.path === "/api/health") return next();
+  try {
+    await connectDB();
+    next();
+  } catch (err) {
+    console.error("Database connection error:", err.message);
+    res.status(500).json({
+      error: "Database connection failed. Please ensure MONGODB_URI is configured correctly in environment variables.",
+    });
+  }
+});
 
 // --- Routes ---
 app.get("/api/health", (req, res) => {
@@ -86,4 +104,9 @@ async function start() {
   }
 }
 
-start();
+// Start HTTP server locally, or export app for Vercel serverless
+if (!process.env.VERCEL) {
+  start();
+}
+
+module.exports = app;
