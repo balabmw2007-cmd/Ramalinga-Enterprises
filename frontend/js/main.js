@@ -649,9 +649,9 @@ function initPostUpload() {
       const base =
         typeof API_BASE_URL !== "undefined"
           ? API_BASE_URL
-          : (window.location && window.location.hostname
-              ? `${window.location.protocol === "https:" ? "https:" : "http:"}//${window.location.hostname}:5000/api`
-              : "http://localhost:5000/api");
+          : window.location.hostname.includes("vercel.app")
+              ? "https://ramalinga-enterprises-prbq.vercel.app/api"
+              : "http://localhost:5000/api";
       const headers = {};
       if (typeof Session !== "undefined" && Session.token) {
         headers["Authorization"] = `Bearer ${Session.token}`;
