@@ -14,7 +14,7 @@ const API_BASE_URL = (() => {
       const proto = window.location.protocol === "https:" ? "https:" : "http:";
       return `${proto}//${host}:5000/api`;
     }
-    return `${window.location.origin}/api`;
+    return "https://ramalinga-enterprises-prbq.vercel.app/api";
   }
   return "http://localhost:5000/api";
 })();
