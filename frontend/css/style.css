@@ -261,7 +261,7 @@ p { color: var(--text-dim); margin: 0 0 1em; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
 .card {
-  background-image: url("Washing machine, Repair, Servicing in PCMC Near Me +919881647076.jpg");
+  background-image: url("refrigerator.jpg");
   background-size:cover;
   background-repeat: no-repeat;
   border: 1px solid var(--line);
