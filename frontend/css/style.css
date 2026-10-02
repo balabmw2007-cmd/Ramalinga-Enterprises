@@ -261,15 +261,15 @@ p { color: var(--text-dim); margin: 0 0 1em; }
 .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 
 .card {
-  background-image: url("refrigerator.jpg");
-  background-size:cover;
+  background-image: url(refrigerator.jpg);
+  background-size: cover;
   background-repeat: no-repeat;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   padding: 24px;
 }
-.card h3 { font-size: 1.1rem; margin-bottom: 8px; }
-.card .code {
+.card-tag h3 { font-size: 1.1rem; margin-bottom: 8px; }
+.card-tag .code {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   color: var(--teal);
@@ -1166,3 +1166,33 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+/* Desktop: hiden hamburger menu */
+.nav-toggle {
+  display: none !important;
+}
+
+/* Mobile/table: show hamburger menu */
+@media (max-width: 860px) {
+  .nav-toggle { display: inline-flex; }
+
+    .navbar-inner {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 10px 12px;
+      gap: 8px;
+      overflow: visible;
+    }
+
+    .nav-action {
+      margin-left: auto;
+      flex-shrink: 0;
+      gap: 6px;
+    }
+
+    .nav-toggle {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      padding: 8px 10px;
+      flex-shrink: 0;
+    }
+  }
