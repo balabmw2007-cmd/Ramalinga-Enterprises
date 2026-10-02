@@ -1166,33 +1166,16 @@ footer {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
-/* Desktop: hiden hamburger menu */
+/* Desktop: hide hamburger menu */
 .nav-toggle {
   display: none !important;
 }
 
-/* Mobile/table: show hamburger menu */
+/* Mobile/tablet: show hamburger menu */
 @media (max-width: 860px) {
-  .nav-toggle { display: inline-flex; }
-
-    .navbar-inner {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 10px 12px;
-      gap: 8px;
-      overflow: visible;
-    }
-
-    .nav-action {
-      margin-left: auto;
-      flex-shrink: 0;
-      gap: 6px;
-    }
-
-    .nav-toggle {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      padding: 8px 10px;
-      flex-shrink: 0;
-    }
+  .nav-toggle {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
   }
+}

@@ -8,7 +8,7 @@
 // Maps product name keywords → image file path (relative to the HTML page).
 // Images live in css/ because that is where they were originally uploaded.
 const PRODUCT_IMAGE_MAP = [
-  { keywords: ["refrigerator", "fridge"],         img: "css/Washing machine, Repair, Servicing in PCMC Near Me +919881647076.jpg" },
+  { keywords: ["refrigerator", "fridge"],         img: "css/refrigerator.jpg" },
   { keywords: ["television", "televisions", "tv", "screens"], img: "css/product-1000x1000.jpeg" },
   { keywords: ["washing", "laundry", "spin pro"],  img: "css/Laundry.jpg" },
   { keywords: ["fan", "breeze", "tower", "desk"],  img: "css/Duo 12 Inch Desk and Handheld Mini Fan.jpg" },
