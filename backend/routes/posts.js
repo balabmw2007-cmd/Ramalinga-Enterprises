@@ -2,6 +2,7 @@ const express = require("express");
 const path = require("path");
 const fs = require("fs");
 const multer = require("multer");
+const { put, del } = require("@vercel/blob");
 const Post = require("../models/Post");
 
 const router = express.Router();
@@ -114,13 +115,29 @@ router.post("/", (req, res) => {
       let mediaType = "none";
 
       if (req.file) {
-        mediaUrl = `/uploads/${req.file.filename}`;
+        const blob = await put(
+          `posts/${req.file.filename}`,
+          fs.createReadStream(req.file.path),
+          {
+            access: "public",
+            contentType: req.file.mimetype,
+          }
+ );
+
+        mediaUrl = blob.url;
+
         if (req.file.mimetype.startsWith("video/")) {
           mediaType = "video";
         } else if (req.file.mimetype.startsWith("image/")) {
           mediaType = "image";
         }
-      } else if (req.body.mediaUrl) {
+
+        // Remove the temporary file after successful Blob upload
+        try {
+          fs.unlinkSync(req.file.path);
+        } catch (_) {}
+      }
+       else if (req.body.mediaUrl) {
         mediaUrl = req.body.mediaUrl.trim();
         mediaType = req.body.mediaType || "image";
       }
