@@ -566,6 +566,9 @@ function postCardHTML(post) {
         <h3 class="post-title">${escapeHTML(post.title)}</h3>
         ${post.description ? `<p class="post-desc">${escapeHTML(post.description)}</p>` : ""}
         ${tagsHTML}
+        <button class="btn btn-danger post-delete-btn" type="button" data-post-id="${post._id}">
+          🗑 Delete Post
+        </button>
       </div>
     </article>
   `;
@@ -596,6 +599,37 @@ async function initPostsFeed() {
     `;
   }
 }
+
+async function deletePost(postId) {
+  if (!postId) return;
+
+  const confirmed = confirm("Are you sure you want to delete this post?");
+  if (!confirmed) return;
+
+  try {
+    await apiRequest(`/posts/${postId}`, {
+      method: "DELETE",
+    });
+
+    alert("Post deleted successfully.");
+    await initPostsFeed();
+  } catch (err) {
+    console.error("Delete post error:", err);
+    alert(err.message || "Could not delete post.");
+  }
+}
+
+
+// ADD THIS CODE BELOW
+document.addEventListener("click", (event) => {
+  const button = event.target.closest(".post-delete-btn");
+
+  if (!button) return;
+
+  const postId = button.dataset.postId;
+
+  deletePost(postId);
+});
 
 function initPostUpload() {
   const toggleBtn = document.getElementById("toggle-post-form-btn");
