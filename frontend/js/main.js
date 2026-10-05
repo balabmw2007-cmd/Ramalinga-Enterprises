@@ -171,6 +171,9 @@ function renderReviewsHTML(reviews = []) {
             <div class="review-rating">${starStr}</div>
           </div>
           <p class="review-comment">${escapeHTML(r.comment)}</p>
+          <button class="btn btn-danger review-delete-btn" type="button" data-review-id="${r._id}">
+            🗑 Delete Review
+          </button>
         </div>
       `;
     })
@@ -619,16 +622,67 @@ async function deletePost(postId) {
   }
 }
 
+async function deleteReview(productId, reviewId) {
+  if (!productId || !reviewId) return;
+
+  const confirmed = confirm("Are you sure you want to delete this review?");
+  if (!confirmed) return;
+
+  try {
+    const result = await apiRequest(
+      `/products/${encodeURIComponent(productId)}/reviews/${encodeURIComponent(reviewId)}`,
+      {
+        method: "DELETE",
+      }
+    );
+
+    alert("Review deleted successfully.");
+
+    const product = window.currentProduct;
+
+    if (product) {
+      product.reviews = result.reviews || [];
+      product.rating = result.rating || 0;
+
+      const listEl = document.querySelector("#reviews-list");
+      if (listEl) {
+        listEl.innerHTML = renderReviewsHTML(product.reviews);
+      }
+
+      const countEl = document.querySelector("#reviews-count-text");
+      if (countEl) {
+        countEl.innerHTML =
+          `${product.reviews.length} review${product.reviews.length === 1 ? "" : "s"} · Rating: ` +
+          `<span class="rating-highlight">${product.rating}/5</span>`;
+      }
+    }
+  } catch (err) {
+    console.error("Delete review error:", err);
+    alert(err.message || "Could not delete review.");
+  }
+}
 
 // ADD THIS CODE BELOW
 document.addEventListener("click", (event) => {
-  const button = event.target.closest(".post-delete-btn");
+  const postButton = event.target.closest(".post-delete-btn");
 
-  if (!button) return;
+  if (postButton) {
 
-  const postId = button.dataset.postId;
+  const postId = postButton.dataset.postId;
 
   deletePost(postId);
+  return;
+  }
+
+  const reviewButton = event.target.closest(".review-delete-btn");
+
+  if (reviewButton) {
+    const reviewId = reviewButton.dataset.reviewId;
+    const productId = window.currentProduct?.id;
+
+    deleteReview(productId, reviewId);
+    return;
+  }
 });
 
 function initPostUpload() {

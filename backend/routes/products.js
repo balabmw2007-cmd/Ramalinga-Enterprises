@@ -93,3 +93,56 @@ router.post("/:id/reviews", async (req, res) => {
 });
 
 module.exports = router;
+
+// DELETE /api/products/:id/reviews/:reviewId
+router.delete("/:id/reviews/:reviewId", async (req, res) => {
+  try {
+    const { id, reviewId } = req.params;
+
+    const product = await Product.findOne({ id });
+
+    if (!product) {
+      return res.status(404).json({ error: "Product not found." });
+    }
+
+    const reviewExists = product.reviews.some(
+      (review) => review._id.toString() === reviewId
+    );
+
+    if (!reviewExists) {
+      return res.status(404).json({ error: "Review not found." });
+    }
+
+    product.reviews = product.reviews.filter(
+      (review) => review._id.toString() !== reviewId
+    );
+
+    const ratings = product.reviews.map(
+      (review) => Number(review.rating) || 0
+    );
+
+    const newRating = ratings.length
+      ? Number(
+          (
+            ratings.reduce((sum, rating) => sum + rating, 0) /
+            ratings.length
+          ).toFixed(1)
+        )
+      : 0;
+
+    product.rating = newRating;
+
+    await product.save();
+
+    res.json({
+      message: "Review deleted successfully.",
+      reviews: product.reviews,
+      rating: product.rating,
+    });
+  } catch (err) {
+    console.error("Delete review error:", err);
+    res.status(500).json({
+      error: err.message || "Could not delete review.",
+    });
+  }
+});
