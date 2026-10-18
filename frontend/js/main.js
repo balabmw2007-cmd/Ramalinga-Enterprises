@@ -675,6 +675,7 @@ document.addEventListener("click", (event) => {
   }
 
   const reviewButton = event.target.closest(".review-delete-btn");
+  console.log("Review Delete button clicked");
 
   if (reviewButton) {
     const reviewId = reviewButton.dataset.reviewId;

@@ -12,7 +12,7 @@ const products = [
     category: "Refrigerators",
     rating: 4.6,
     stock: "Available",
-    specs: { capacity: "340L", type: "Double Door", energyRating: "5 Star" },
+    specs: { capacity: "All Type", type: "Double Door,Single Door",brands:"LLOYD" },
     description: "Double-door refrigerator with inverter compressor and frost-free cooling.",
   },
   {
@@ -21,7 +21,7 @@ const products = [
     category: "Televisions",
     rating: 4.5,
     stock: "Available",
-    specs: { screen: "43 Inch", resolution: "4K Ultra HD", brands: "LLOYD" },
+    specs: { screen: "All Type", resolution: "4K Ultra HD", brands: "LLOYD" },
     description: "Ultra HD smart LED TV with vibrant display and surround sound",
   },
   {
@@ -30,7 +30,7 @@ const products = [
     category: "Washing Machines",
     rating: 4.4,
     stock: "Available",
-    specs: { capacity: "7kg", type: "Front Load", energyRating: "4 Star" },
+    specs: { capacity: "All Type", type: "Top Load & Front Load" },
     description: "Front-load washing machine with steam wash and 14 wash programs.",
   },
   {
@@ -57,7 +57,7 @@ const products = [
     category: "Air Conditioners",
     rating: 4.5,
     stock: "Available",
-    specs: { capacity: "1.5 Ton", type: "Split Inverter", brands: "LLOYD, Carrier, Mitsubishi, daiken, bluestar." },
+    specs: { capacity: "All Type", type: "Split Inverter", brands: "LLOYD, Carrier, Mitsubishi, daiken, bluestar." },
     description: "Split inverter AC with dust filtration and copper condenser coil.",
   },
   {
