@@ -681,6 +681,9 @@ document.addEventListener("click", (event) => {
     const reviewId = reviewButton.dataset.reviewId;
     const productId = window.currentProduct?.id;
 
+    console.log("Review ID:",reviewId);
+    console.log("Product ID:",productId);
+
     deleteReview(productId, reviewId);
     return;
   }
