@@ -102,6 +102,12 @@ router.delete("/:id/reviews/:reviewId", async (req, res) => {
 
     const product = await Product.findOne({ $or: [{ id }, { _id: id.match(/^[0-9a-fA-F] {24}$/) ? id : null }] });
 
+    console.log("Product lookup result:",
+    product ? {
+      id: product.id,
+      _id: product._id
+    } : "NOT FOUND");
+
     if (!product) {
       return res.status(404).json({ error: "Product not found." });
     }
