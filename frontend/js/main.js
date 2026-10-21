@@ -196,6 +196,10 @@ async function initProductDetail() {
   try {
     const data    = await apiRequest(`/products/${encodeURIComponent(id)}`);
     const p       = data.product;
+    window.currentProduct = p;
+    console.log("Current product:", p);
+    console.log("Product ID:", p.id);
+    console.log("Product _id:", p._id);
     const imgUrl  = getProductImage(p.name);
     const specs   = Object.entries(p.specs || {})
       .map(([k, v]) => `<div class="detail-spec"><span class="spec-key">${k}</span><span class="spec-val">${v}</span></div>`)
@@ -679,7 +683,7 @@ document.addEventListener("click", (event) => {
 
   if (reviewButton) {
     const reviewId = reviewButton.dataset.reviewId;
-    const productId = window.currentProduct?.id;
+    const productId = window.currentProduct?._id ||window.currentProduct?.id
 
     console.log("Review ID:",reviewId);
     console.log("Product ID:",productId);
