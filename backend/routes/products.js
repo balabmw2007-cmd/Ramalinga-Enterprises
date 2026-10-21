@@ -100,7 +100,13 @@ router.delete("/:id/reviews/:reviewId", async (req, res) => {
     const { id, reviewId } = req.params;
     console.log("Delete review request:", { id, reviewId });
 
-    const product = await Product.findOne({ $or: [{ id }, { _id: id.match(/^[0-9a-fA-F] {24}$/) ? id : null }] });
+  const product = await Product.findOne({
+    $or: [
+      { id: id },
+      ...( /^[0-9a-fA-F]{24}$/.test(id) ?
+  [{ _id: id }] : [])
+    ]
+  });
 
     console.log("Product lookup result:",
     product ? {
