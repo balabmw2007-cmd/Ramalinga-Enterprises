@@ -404,8 +404,8 @@ p { color: var(--text-dim); margin: 0 0 1em; }
   padding: 20px;
   background: linear-gradient(
     to bottom,
-    rgba(10, 19, 25, 0.55) 0%,
-    rgba(10, 19, 25, 0.88) 100%
+    rgba(10, 19, 25, 0.72) 0%,
+    rgba(10, 19, 25, 0.96) 100%
   );
 }
 .product-card-overlay .code {
