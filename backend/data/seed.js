@@ -30,7 +30,7 @@ const products = [
     category: "Washing Machines",
     rating: 4.4,
     stock: "Available",
-    specs: { capacity: "All Type", type: "Top Load & Front Load" },
+    specs: { capacity: "All Type", type: "Top Load & Front Load", brands: "LLOYD" },
     description: "Front-load washing machine with steam wash and 14 wash programs.",
   },
   {
@@ -39,7 +39,7 @@ const products = [
     category: "Fans",
     rating: 4.2,
     stock: "Available",
-    specs: { speeds: 5, remote: true, oscillation: "80°" },
+    specs: { speeds: 5, remote: true, oscillation: "80°", brands: "all brands" },
     description: "Bladeless tower fan with remote control and sleep mode.",
   },
   {
@@ -48,7 +48,7 @@ const products = [
     category: "Kitchen",
     rating: 4.3,
     stock: "Available",
-    specs: { capacity: "28L", type: "Convection" },
+    specs: { capacity: "28L", type: "Convection", brands: "Havells" },
     description: "Convection microwave with 200 auto-cook menus.",
   },
   {
@@ -76,8 +76,22 @@ const products = [
   try {
     await connectDB();
 
-    await Product.deleteMany({});
-    await Product.insertMany(products);
+    for (const product of products) {
+      await Product.updateOne(
+        { id: product.id },
+        {
+          $set:{
+            name: product.name,
+            category: product.category,
+            specs: product.specs,
+            description: product.description,
+            stock: product.stock,
+          },
+        },
+        { upsert: false }
+      );
+    }
+
     console.log(`Seeded/updated ${products.length} products in MongoDB.`);
 
     const postCount = await Post.countDocuments();

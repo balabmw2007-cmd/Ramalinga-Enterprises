@@ -115,13 +115,13 @@ p { color: var(--text-dim); margin: 0 0 1em; }
   text-decoration:none;
   color: var(--text);
 }
-.brand .mark { 
-  width: 30px; height: 29px; 
+.brand .mark {
+  width: 30px; height: 29px;
   position: initial;top: 27px; left: 75px;
   z-index: 100;
-  animation:pulse 2.6s ease-in-out infinite; 
+  animation:pulse 2.6s ease-in-out infinite;
 }
-  
+
 .brand .mark-tag{
   background-image: var(--copper);
   max-width:2px ; max-height: 2px;
@@ -1177,5 +1177,89 @@ footer {
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
+  }
+}
+
+/*---------- Category cards: match product listing design ----------*/
+#category .grid-3 {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: 24px;
+}
+
+#caregories .grid-3 > div {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  min-height: 260px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 18px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: #fff;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark overlay keeps text readable */
+#categories .grid-3 > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(
+    135deg,
+    rgba(5, 25, 32, 0.72),
+    rgba(0, 12, 18, 0.88)
+  );
+}
+
+#categories .grid-3 > div .code,
+#categories .grid-3 > div .code2,
+#categories .grid-3 > div .code3,
+#categories .grid-3 > div .code4,
+#categories .grid-3 > div .code5,
+#categories .grid-3 > div .code6,
+#categories .grid-3 > div .code7 {
+  color: #4ade80;
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+}
+
+#categories .grid-3 > div h3 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.35rem;
+  line-height: 1.35;
+}
+
+#categories .grid-3 > div p {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.88);
+  font-size: 1rem;
+  line-height: 1.7;
+}
+
+/* Tablet and mobile layout */
+@media (max-width: 700px) {
+  #categories .grid-3 {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+
+  #categories .grid-3 > div {
+    min-height: 230px;
+    padding: 24px;
+  }
+
+  #categories .grid-3 > div h3 {
+    font-size: 1.2rem;
   }
 }
