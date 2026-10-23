@@ -1179,3 +1179,61 @@ footer {
     justify-content: center;
   }
 }
+
+/* ---------- Home page: 7 category cards only ---------- */
+#categories .grid-3 > div {
+  position: relative;
+  min-height: 240px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 10px;
+  overflow: hidden;
+  border: 1px solid #2a3d47;
+  border-radius: 10px;
+  background-color: #0a1319;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  isolation: isolate;
+}
+
+/* Dark overlay behind category text */
+#categories .grid-3 > div::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 19, 25, 0.15),
+    rgba(10, 19, 25, 0.92)
+  );
+  z-index: -1;
+}
+
+#categories .grid-3 > div h3 {
+  color: #faf6f6;
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+#categories .grid-3 > div p {
+  color: rgba(250, 246, 246, 0.85);
+  font-size: 0.88rem;
+  margin: 0;
+}
+
+#categories .grid-3 > div [class^="code"] {
+  color: #44e46c;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.75rem;
+  letter-spacing: 0.06em;
+}
+
+#categories .grid-3 > div:hover {
+  transform: translateY(-4px);
+  border-color: #44e46c;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
