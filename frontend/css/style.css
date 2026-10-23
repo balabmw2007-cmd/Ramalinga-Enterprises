@@ -1237,3 +1237,201 @@ footer {
   border-color: #44e46c;
   transition: transform 0.2s ease, border-color 0.2s ease;
 }
+
+/* Redesign only the three homepage statistic cards */
+.hero-specs-redesign {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  width: 100%;
+  max-width: 100%;
+  margin-top: 20px 0;
+}
+
+.hero-specs-redesign .spec-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 10px;
+  min-height: 140px;
+  padding: 18px 22px;
+  overflow: hidden;
+  background: #fffafa;
+  border: 1px solid #0f0f0f;
+  border-radius: 14px;
+  box-sizing: border-box;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.hero-specs-redesign .spec-content {
+  flex: 1 1 58%;
+  min-width: 0;
+}
+
+.hero-specs-redesign .num {
+  color: #16c765;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 8px;
+}
+
+.hero-specs-redesign .label {
+  color: #26323a;
+  font-size: clamp(0.85rem, 1.8vw, 1.15rem);
+  overflow-wrap: break-word;
+  line-height: 1.35;
+}
+
+.hero-specs-redesign .spec-visual {
+  flex: 0 0 42%;
+  min-width: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  gap: 4px;
+  font-size: clamp(1.6rem, 4vw, 2.6rem);
+}
+
+.hero-specs-redesign .appliances-visual,
+.hero-specs-redesign .service-visual,
+.hero-specs-redesign .warranty-visual {
+  background: radial-gradient(
+    ellipse,
+    rgba(38, 220, 125, 0.2),
+    transparent 72%
+  );
+}
+
+.hero-specs-redesign .appliances-visual {
+  flex-wrap: wrap;
+}
+
+.hero-specs-redesign .shield {
+  width: 76px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: #079e4b;
+  background: linear-gradient(145deg, #e4ffed, #a9f3c2);
+  border: 5px solid #12bf60;
+  clip-path: polygon(
+    50% 0, 95% 18%, 88% 72%, 50% 100%, 12% 72%, 5% 18%
+  );
+}
+
+.hero-specs-redesign .shield-check {
+  font-size: 2rem;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.hero-specs-redesign .shield-years {
+  font-size: 0.9rem;
+  font-weight: 800;
+}
+
+@media (min-width: 768px) {
+  .hero-specs-redesign .spec-card {
+    min-height: 190px;
+    padding: 28px 36px;
+  }
+
+  .hero-specs-redesign .spec-visual {
+    flex-basis: 32%;
+  }
+
+  /* Laptop and desktop */
+@media (min-width: 900px) {
+  .hero-specs-redesign {
+    max-width: 100%;
+    gap: 4px;
+  }
+
+  .hero-specs-redesign .spec-card {
+    min-height: 190px;
+    padding: 22px 30px;
+    margin: 0%;
+  }
+
+  .hero-specs-redesign .spec-visual {
+    flex-basis: 42%;
+    font-size: 2.8rem;
+  }
+
+  .hero-specs-redesign .spec-visual img {
+    height: 200px;
+    display: block;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+}
+
+
+/* Small mobile screens */
+@media (max-width: 600px) {
+  .hero-specs-redesign .spec-card {
+    min-height: 150px;
+    padding: 14px 16px;
+    gap: 8px;
+  }
+
+  .hero-specs-redesign .spec-content {
+    flex: 1 1 52%;
+  }
+
+  .hero-specs-redesign .spec-visual {
+    flex: 0 0 44%;
+    min-width: 0;
+  }
+
+  .hero-specs-redesign .spec-visual img {
+    width: 100%;
+    height: 145px;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  .hero-specs-redesign .num {
+    font-size: 2.2rem;
+  }
+
+  .hero-specs-redesign .label {
+    font-size: 0.9rem;
+  }
+}
+
+/* Real images inside the three homepage statistic cards */
+.hero-specs-redesign .spec-visual img {
+  display: block;
+  width: 100%;
+  height: 190px;
+  object-fit: contain;
+  object-position: center;
+}
+
+.hero-specs-redesign .appliances-visual,
+.hero-specs-redesign .service-visual,
+.hero-specs-redesign .warranty-visual {
+  flex: 0 0 44%;
+  min-width: 0;
+  overflow: hidden;
+}
+
+@media (max-width: 380px) {
+  .hero-specs-redesign .spec-visual img {
+    height: 120px;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero-specs-redesign .spec-visual img {
+    height: 200px;
+  }
+}
+}
